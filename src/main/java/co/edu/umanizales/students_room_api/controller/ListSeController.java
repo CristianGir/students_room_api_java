@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(path = "listse")
+@RequestMapping(path = "/listse")
 public class ListSeController {
     @Autowired
     private ListSeService listSeService;
@@ -39,5 +39,23 @@ public class ListSeController {
     public String deleteByPosition(@PathVariable int position)
     {
         return listSeService.deleteToPosition(position);
+    }
+
+    @GetMapping(path = "/deletebyid/{id}")
+    public String deleteById(@PathVariable String id)
+    {
+        return listSeService.deleteById(id);
+    }
+
+    @GetMapping(path = "/invert")
+    public String invertList()
+    {
+        return listSeService.invertList();
+    }
+
+    @GetMapping(path = "/verify/{id}")
+    public String verifyById(@PathVariable String id)
+    {
+        return listSeService.verifyById(id);
     }
 }
