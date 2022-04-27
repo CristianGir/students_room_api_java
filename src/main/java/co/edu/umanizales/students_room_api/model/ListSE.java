@@ -126,21 +126,30 @@ public class ListSE {
 
     public void deleteById(String id) throws Exception
     {
-        Node temp = head;
-        while(temp.getNext() != null)
+        boolean flag = false;
+        if (this.head.getData().getId().compareTo(id) == 0)
         {
-            if(temp.getNext().getData().getId().equals(id))
+            this.head = this.head.getNext();
+            this.count --;
+            flag = true;
+        }
+        else {
+            Node temp = this.head;
+            while (temp != null)
             {
-                temp.setNext(temp.getNext().getNext());
-                int existing_id = 0;
-
-                if(existing_id != 0)
+                if (temp.getNext().getData().getId().compareTo(id) == 0)
                 {
-                    throw new Exception("El id introducido no existe.");
+                    temp.setNext(temp.getNext().getNext());
+                    this.count--;
+                    flag = true;
+                    break;
                 }
-                this.count--;
+                temp = temp.getNext();
             }
-        temp = temp.getNext();
+        }
+        if (!flag)
+        {
+            throw new Exception("El id no es válido.");
         }
     }
 
@@ -152,17 +161,39 @@ public class ListSE {
             boolean flag = false;
             while (temp != null)
             {
-                if (temp.getData().getId() == id)
+                if (temp.getData().getId().compareTo(id) == 0)
                 {
                     flag = true;
                     break;
                 }
                 temp = temp.getNext();
             }
-            if (flag == false)
+            if (!flag)
             {
                 throw new Exception("El id no se encuentra en la lista.");
             }
+        }
+    }
+
+    public void changeFirstLast() throws Exception
+    {
+        if (this.count > 1)
+        {
+            Node temp = this.head;
+            Pet temp1 = this.head.getData();
+            while (temp != null)
+            {
+                if (temp.getNext() != null)
+                {
+                    this.head.setData(temp.getData());
+                    temp.setData(temp1);
+                    break;
+                }
+                temp = temp.getNext();
+            }
+        }
+        else {
+            throw new Exception("La lista no es válida para la operación.");
         }
     }
 

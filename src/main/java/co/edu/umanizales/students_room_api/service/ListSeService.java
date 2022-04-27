@@ -84,4 +84,16 @@ public class ListSeService {
                 return e.getMessage();
             }
         }
+
+        public String switchEnds()
+        {
+            try {
+                this.list.changeFirstLast();
+                return "Intercambio realizado con éxito.";
+            }
+            catch (Exception e)
+            {
+                return e.getMessage();
+            }
+        }
 }

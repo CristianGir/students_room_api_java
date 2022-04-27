@@ -58,4 +58,10 @@ public class ListSeController {
     {
         return listSeService.verifyById(id);
     }
+
+    @GetMapping(path = "/switchends")
+    public String switchEnds()
+    {
+        return listSeService.switchEnds();
+    }
 }
