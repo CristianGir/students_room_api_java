@@ -64,4 +64,10 @@ public class ListSeController {
     {
         return listSeService.switchEnds();
     }
+
+    @GetMapping(path = "/clear")
+    public String clear()
+    {
+        return listSeService.clear();
+    }
 }

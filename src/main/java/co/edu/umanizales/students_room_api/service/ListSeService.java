@@ -96,4 +96,9 @@ public class ListSeService {
                 return e.getMessage();
             }
         }
+
+        public String clear()
+        {
+            return "La lista se vació con éxito.";
+        }
 }

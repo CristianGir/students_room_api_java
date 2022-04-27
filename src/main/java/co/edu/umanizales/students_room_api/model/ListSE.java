@@ -183,7 +183,7 @@ public class ListSE {
             Pet temp1 = this.head.getData();
             while (temp != null)
             {
-                if (temp.getNext() != null)
+                if (temp.getNext() == null)
                 {
                     this.head.setData(temp.getData());
                     temp.setData(temp1);
@@ -195,6 +195,11 @@ public class ListSE {
         else {
             throw new Exception("La lista no es válida para la operación.");
         }
+    }
+
+    public void clear()
+    {
+        this.head = null;
     }
 
 }
