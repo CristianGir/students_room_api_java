@@ -101,4 +101,17 @@ public class ListSeService {
         {
             return "La lista se vació con éxito.";
         }
+
+        public String mixByGender()
+        {
+            try
+            {
+                this.list.mixByGender();
+                return "Intercalados con éxito.";
+            }
+            catch (Exception e)
+            {
+                return e.getMessage();
+            }
+        }
 }

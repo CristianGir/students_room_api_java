@@ -202,4 +202,59 @@ public class ListSE {
         this.head = null;
     }
 
+    public void mixByGender() throws Exception
+    {
+        if (this.head != null)
+        {
+            if (this.count > 1)
+            {
+                ListSE listMales = new ListSE();
+                ListSE listFemales = new ListSE();
+                Node temp = this.head;
+                while (temp != null)
+                {
+                    if (temp.getData().getGender() == 'M')
+                    {
+                        listMales.add(temp.getData());
+                    }
+                    else
+                    {
+                        listFemales.add(temp.getData());
+                    }
+                    temp = temp.getNext();
+                }
+                if (listMales.count == 0 || listFemales.count == 0)
+                {
+                    throw new Exception("Sólo hay datos de un género.");
+                }
+                else
+                {
+                 Node tempH = listFemales.head;
+                 int position = 2;
+                 while (tempH != null)
+                 {
+                     if (position > listMales.count)
+                     {
+                         listMales.add(tempH.getData());
+                     }
+                     else
+                     {
+                         listMales.addToPosition(position, tempH.getData());
+                     }
+                     tempH = tempH.getNext();
+                     position = position + 2;
+                 }
+                 this.head = listMales.head;
+                }
+            }
+            else
+            {
+                throw new Exception("No hay datos suficientes para intercalar");
+            }
+        }
+        else {
+            throw new Exception("No hay datos para intercalar.");
+        }
+    }
+
 }

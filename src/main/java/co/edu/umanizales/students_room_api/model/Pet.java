@@ -10,4 +10,6 @@ public class Pet {
     private String name;
     private byte age;
     private String breed;
+    private char Gender; //M -> Macho; H -> Hembra.
 }
+

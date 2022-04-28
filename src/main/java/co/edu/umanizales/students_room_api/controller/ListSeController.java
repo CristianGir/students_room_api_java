@@ -6,6 +6,8 @@ import co.edu.umanizales.students_room_api.service.ListSeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(path = "/listse")
 public class ListSeController {
@@ -70,4 +72,21 @@ public class ListSeController {
     {
         return listSeService.clear();
     }
+
+    @PostMapping(path = "/loadpets")
+    public String loadPets(@RequestBody List<Pet> pets)
+    {
+        for (Pet pet : pets)
+        {
+            listSeService.add(pet);
+        }
+        return "Mascotas cargadas exitosamente.";
+    }
+
+    @GetMapping(path = "/mix")
+    public String mixByGender()
+        {
+            return listSeService.mixByGender();
+        }
+
 }
