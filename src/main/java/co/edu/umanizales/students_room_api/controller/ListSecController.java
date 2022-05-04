@@ -6,6 +6,8 @@ import co.edu.umanizales.students_room_api.service.ListSecService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(path = "/listsec")
 public class ListSecController {
@@ -33,5 +35,14 @@ public class ListSecController {
     public String invertList()
     {
         return listSecService.invert();
+    }
+
+    @PostMapping(path = "/loadpets")
+    public String loadPets(@RequestBody List<Pet> pets) {
+        for (Pet pet : pets)
+        {
+            listSecService.add(pet);
+        }
+        return "Mascotas cargadas exitosamente.";
     }
 }

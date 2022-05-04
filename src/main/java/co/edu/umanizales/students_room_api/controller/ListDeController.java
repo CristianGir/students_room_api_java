@@ -6,6 +6,8 @@ import co.edu.umanizales.students_room_api.service.ListDeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(path = "/listde")
 public class ListDeController {
@@ -33,5 +35,14 @@ public class ListDeController {
     public String invertList()
     {
         return listDeService.invert();
+    }
+
+    @PostMapping(path = "/loadpets")
+    public String loadPets(@RequestBody List<Pet> pets) {
+        for (Pet pet : pets)
+        {
+            listDeService.add(pet);
+        }
+        return "Mascotas cargadas exitosamente.";
     }
 }
