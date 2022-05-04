@@ -12,7 +12,7 @@ public class ListSEC {
         if (this.head != null) {
             Node temp = this.head;
             list.add(temp.getData());
-            while (temp != this.head) {
+            while (temp.getNext() != this.head) {
                 list.add(temp.getNext().getData());
                 temp = temp.getNext();
             }
